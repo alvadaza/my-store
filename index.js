@@ -13,7 +13,7 @@ const port = 3000;
 //aplicar un midleware nativo de express.
 app.use(express.json())
 
-const whitelist = ['htpp://localhost:8080', 'https://myapp.co'];
+/* const whitelist = ['http://localhost:8080', 'https://myapp.co', 'http://localhost:3000'];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin)) {
@@ -22,11 +22,15 @@ const options = {
       callback(new Error('no permitido'));
     }
   }
-}
-app.use(cors(options));
+} */
+app.use(cors());
 //definimos la ruta
 // tiene un callback que va a ejecutar la respuesta que enviemos al cliente.
 //el callback siempre tiene dos parámetros "req" y "res".
+app.get('/', (req, res) => {
+  res.send('Hola mi server en express');
+});
+
 app.get ("/nueva-ruta", (req, res) => {
   res.send("soy una nuevga ruta");
 });
