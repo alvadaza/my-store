@@ -8,12 +8,12 @@ const { logErrors, errorHandler, boomErrorHandler  } = require('./middlewares/er
 const app = express();
 
 //le decimos el puerto en que queremos que corra la aplicación
-const port = 3000;
 
 //aplicar un midleware nativo de express.
 app.use(express.json())
+const port = process.env.PORT || 3000;
 
-/* const whitelist = ['http://localhost:8080', 'https://myapp.co', 'http://localhost:3000'];
+/* const whitelist = ['http://localhost:8080', 'https://myapp.co',];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin)) {
@@ -27,11 +27,11 @@ app.use(cors());
 //definimos la ruta
 // tiene un callback que va a ejecutar la respuesta que enviemos al cliente.
 //el callback siempre tiene dos parámetros "req" y "res".
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hola mi server en express');
 });
 
-app.get ("/nueva-ruta", (req, res) => {
+app.get ("/api/nueva-ruta", (req, res) => {
   res.send("soy una nuevga ruta");
 });
 
